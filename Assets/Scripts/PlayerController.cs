@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     public float speed = 1;
+    public bool CanGoLeft = false;
+    public bool CanGoRight = false;
 
     Rigidbody2D rgbd;
     SpriteRenderer sRend;
@@ -19,28 +21,36 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		
-	}
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if( collision.gameObject.GetComponent<Goal>() != null)
-        {
-            TryGoToNextLevel();
-        }
-    }
-
-    private void TryGoToNextLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        processMoving();
 
     }
 
-    private void flip(float mHorizintal) {
-        if (mHorizintal == 0) {
+    void processMoving() {
+        float mHorizontal = Input.GetAxisRaw("Horizontal") * speed;
+        flip(mHorizontal);
+        Move(mHorizontal);
+        animate(mHorizontal);
+
+    }
+
+    void Move(float mHorizontal) {
+        if ((mHorizontal > 0 && !CanGoRight) || (mHorizontal < 0 && !CanGoLeft)) {
             return;
         }
 
-        sRend.flipX = mHorizintal < 0;
+        rgbd.AddForce(new Vector2(mHorizontal * Time.deltaTime, 0), ForceMode2D.Impulse);
+    }
+
+
+    private void flip(float mHorizontal) {
+        if (mHorizontal == 0) {
+            return;
+        }
+
+        sRend.flipX = mHorizontal < 0;
+    }
+
+    void animate(float mHorizontal) {
+        anim.SetBool("isWalking", mHorizontal != 0);
     }
 }
