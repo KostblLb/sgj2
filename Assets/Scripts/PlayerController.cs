@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
-
     public float speed = 1;
 
     Rigidbody2D rgbd;
@@ -34,12 +33,7 @@ public class PlayerController : MonoBehaviour {
     private void TryGoToNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        float moveHorizontal = Input.GetAxisRaw("Horizontal") * speed;
-        Debug.Log(moveHorizontal);
-        flip(moveHorizontal);
-        anim.SetBool("isWalking", moveHorizontal != 0);
-        rgbd.velocity = new Vector2(moveHorizontal, 0) * speed;
-        //rgbd.AddForce(new Vector2(moveHorizontal, 0) * speed);
+
     }
 
     private void flip(float mHorizintal) {
