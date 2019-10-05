@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
 
-        rgbd.AddForce(new Vector2(mHorizontal * Time.deltaTime, 0), ForceMode2D.Impulse);
+        rgbd.AddForce(new Vector2(mHorizontal * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
     }
 
 
