@@ -17,7 +17,8 @@ public class PlatformController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        rgbd.velocity = new Vector2(hSpeed, vSpeed);
+        //rgbd.velocity = new Vector2(hSpeed, vSpeed);
+        rgbd.AddForce(new Vector2(hSpeed, vSpeed));
         //transform.position = transform.position + new Vector3(hSpeed, vSpeed, 0);
-	}
+    }
 }
