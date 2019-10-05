@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-<<<<<<< Updated upstream
 		
 	}
 
@@ -35,7 +34,6 @@ public class PlayerController : MonoBehaviour {
     private void TryGoToNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-=======
         float moveHorizontal = Input.GetAxisRaw("Horizontal") * speed;
         Debug.Log(moveHorizontal);
         flip(moveHorizontal);
@@ -50,6 +48,5 @@ public class PlayerController : MonoBehaviour {
         }
 
         sRend.flipX = mHorizintal < 0;
->>>>>>> Stashed changes
     }
 }
