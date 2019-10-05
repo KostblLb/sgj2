@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         processMoving();
-
+        checkGameOver();
     }
 
     void processMoving() {
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour {
         flip(mHorizontal);
         Move(mHorizontal);
         animate(mHorizontal);
-
     }
 
     void Move(float mHorizontal) {
@@ -40,7 +39,6 @@ public class PlayerController : MonoBehaviour {
 
         rgbd.AddForce(new Vector2(mHorizontal * Time.deltaTime, 0), ForceMode2D.Impulse);
     }
-
 
     private void flip(float mHorizontal) {
         if (mHorizontal == 0) {
@@ -52,5 +50,11 @@ public class PlayerController : MonoBehaviour {
 
     void animate(float mHorizontal) {
         anim.SetBool("isWalking", mHorizontal != 0);
+    }
+
+    void checkGameOver() {
+        if (rgbd.transform.position.y <= -6) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
