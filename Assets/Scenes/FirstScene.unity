@@ -218,21 +218,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 61542774085773206, guid: 8f253eb5e3e28c54e9c1eb64d5dd4231,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: e767211e18ecf634f9b2d7e092bc87ea, type: 2}
-    - target: {fileID: 95435823230910300, guid: 8f253eb5e3e28c54e9c1eb64d5dd4231,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50068080717988248, guid: 8f253eb5e3e28c54e9c1eb64d5dd4231,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f253eb5e3e28c54e9c1eb64d5dd4231, type: 2}
   m_IsPrefabAsset: 0
@@ -275,21 +260,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114642004419782336, guid: 2ccedcea81b05af488ee76ed5e8580b5,
-        type: 2}
-      propertyPath: vSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114642004419782336, guid: 2ccedcea81b05af488ee76ed5e8580b5,
-        type: 2}
-      propertyPath: hSpeed
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61623203018848374, guid: 2ccedcea81b05af488ee76ed5e8580b5,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 9b8322b86972f054f92b8b1b2f49b166, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ccedcea81b05af488ee76ed5e8580b5, type: 2}
   m_IsPrefabAsset: 0
