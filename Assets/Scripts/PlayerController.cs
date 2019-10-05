@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -13,4 +14,17 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 		
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if( collision.gameObject.GetComponent<Goal>() != null)
+        {
+            TryGoToNextLevel();
+        }
+    }
+
+    private void TryGoToNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
