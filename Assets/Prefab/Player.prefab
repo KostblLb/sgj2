@@ -99,6 +99,10 @@ MonoBehaviour:
   speed: 100
   CanGoLeft: 1
   CanGoRight: 1
+  ReverseHInput: 0
+  CanJump: 1
+  PublicJumpForce: 75
+  gapBetweenJumps: 0.1
 --- !u!95 &95435823230910300
 Animator:
   serializedVersion: 3

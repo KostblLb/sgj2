@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour {
             jumpForce = PublicJumpForce;
             ReadyToJupm = false;
         }
-        
+
         rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, jumpForce), ForceMode2D.Impulse);
     }
 
