@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour {
     public bool CanGoRight = false;
     public bool ReverseHInput = false;
     public bool CanJump = false;
+    public float PublicJumpForce = 75;
+    public float gapBetweenJumps = 1f;
+
     private bool ReadyToJupm = false;
+    private float deltaTimeBeforeJump = 0f;
 
     Rigidbody2D rgbd;
     SpriteRenderer sRend;
@@ -36,12 +40,12 @@ public class PlayerController : MonoBehaviour {
         animate(mHorizontal);
     }
 
-    
-
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
-        if (col.gameObject.tag == ("ground") && ReadyToJupm == false)
-        {
+        if (col.gameObject.tag == ("ground") && ReadyToJupm == false && deltaTimeBeforeJump < gapBetweenJumps) {
+            deltaTimeBeforeJump += Time.deltaTime;
+        } else if (col.gameObject.tag == ("ground") && ReadyToJupm == false && deltaTimeBeforeJump >= gapBetweenJumps) {
+            deltaTimeBeforeJump = 0f;
             ReadyToJupm = true;
         }
     }
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour {
         float jumpForce = 0;
         if (ReadyToJupm && CanJump && mVertical > 0)
         {
-            jumpForce = 75;
+            jumpForce = PublicJumpForce;
             ReadyToJupm = false;
         }
         
