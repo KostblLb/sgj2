@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     public bool CanGoLeft = false;
     public bool CanGoRight = false;
     public bool ReverseHInput = false;
+    public bool CanJump = false;
+    private bool ReadyToJupm = false;
 
     Rigidbody2D rgbd;
     SpriteRenderer sRend;
@@ -22,23 +24,41 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        processMoving();
+        processMoving(); 
         checkGameOver();
     }
 
     void processMoving() {
         float mHorizontal = Input.GetAxisRaw("Horizontal") * speed;
+        float mVertical = Input.GetAxisRaw("Vertical");
         flip(mHorizontal);
-        Move(mHorizontal);
+        Move(mHorizontal, mVertical);
         animate(mHorizontal);
     }
 
-    void Move(float mHorizontal) {
+    
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == ("ground") && ReadyToJupm == false)
+        {
+            ReadyToJupm = true;
+        }
+    }
+
+    void Move(float mHorizontal, float mVertical) {
         if ((mHorizontal > 0 && !CanGoRight) || (mHorizontal < 0 && !CanGoLeft)) {
             return;
         }
+
+        float jumpForce = 0;
+        if (ReadyToJupm && CanJump && mVertical > 0)
+        {
+            jumpForce = 75;
+            ReadyToJupm = false;
+        }
         
-        rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
+        rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, jumpForce), ForceMode2D.Impulse);
     }
 
     private void flip(float mHorizontal) {
