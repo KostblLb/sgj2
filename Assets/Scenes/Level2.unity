@@ -1384,8 +1384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "<i>... \u0442\u0435\u043F\u0435\u0440\u044C \u044F \u0443\u043C\u0435\u044E
-    \u0445\u043E\u0434\u0438\u0442\u044C \u0432\u043F\u0440\u0430\u0432\u043E ...</i>"
+  m_Text: <i>... and I can to move right now ...</i>
 --- !u!222 &1913538161
 CanvasRenderer:
   m_ObjectHideFlags: 0
