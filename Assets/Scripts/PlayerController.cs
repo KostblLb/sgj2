@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour {
     public bool CanJump = false;
     public float PublicJumpForce = 75;
     public float gapBetweenJumps = 1f;
+    public bool isDuplicate = false;
+    public float duplicateShift = 0;
 
     private bool ReadyToJupm = false;
     private float deltaTimeBeforeJump = 0f;
@@ -62,7 +64,11 @@ public class PlayerController : MonoBehaviour {
             ReadyToJupm = false;
         }
 
-        rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, jumpForce), ForceMode2D.Impulse);
+        if (!isDuplicate) {
+            rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, jumpForce), ForceMode2D.Impulse);
+        } else {
+            transform.position = transform.parent.position + new Vector3(duplicateShift, 0, 0); ;
+        }
     }
 
     private void flip(float mHorizontal) {
