@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float speed = 1;
     public bool CanGoLeft = false;
     public bool CanGoRight = false;
+    public bool ReverseHInput = false;
 
     Rigidbody2D rgbd;
     SpriteRenderer sRend;
@@ -36,8 +37,8 @@ public class PlayerController : MonoBehaviour {
         if ((mHorizontal > 0 && !CanGoRight) || (mHorizontal < 0 && !CanGoLeft)) {
             return;
         }
-
-        rgbd.AddForce(new Vector2(mHorizontal * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
+        
+        rgbd.AddRelativeForce(new Vector2((ReverseHInput ? -1 : 1) * mHorizontal * Time.fixedDeltaTime, 0), ForceMode2D.Impulse);
     }
 
     private void flip(float mHorizontal) {
