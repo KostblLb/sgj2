@@ -20,8 +20,8 @@ public class PlayerSpeech : MonoBehaviour
     {
         if (visible)
             transform.position = new Vector3(
-                player.transform.position.x + 3,
-                player.transform.position.y,
+                player.transform.position.x + 5.5f,
+                player.transform.position.y - 0.5f,
                 player.transform.position.z);
         else
             transform.position = new Vector2(-1000, -1000);
